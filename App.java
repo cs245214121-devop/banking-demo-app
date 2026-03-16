@@ -1,41 +1,30 @@
-import java.util.Scanner;
-
 public class App {
 
     static int balance = 1000;
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Banking Application Started");
+        System.out.println("Initial Balance = " + balance);
 
-        while(true){
+        deposit(500);
+        withdraw(200);
+        checkBalance();
 
-            System.out.println("1 Deposit");
-            System.out.println("2 Withdraw");
-            System.out.println("3 Check Balance");
-            System.out.println("4 Exit");
+        System.out.println("Application executed successfully inside Docker container");
+    }
 
-            int choice = sc.nextInt();
+    static void deposit(int amount){
+        balance += amount;
+        System.out.println("Deposited: " + amount);
+    }
 
-            if(choice==1){
-                System.out.println("Enter amount:");
-                int amt=sc.nextInt();
-                balance+=amt;
-            }
+    static void withdraw(int amount){
+        balance -= amount;
+        System.out.println("Withdrawn: " + amount);
+    }
 
-            else if(choice==2){
-                System.out.println("Enter amount:");
-                int amt=sc.nextInt();
-                balance-=amt;
-            }
-
-            else if(choice==3){
-                System.out.println("Balance = "+balance);
-            }
-
-            else{
-                break;
-            }
-        }
+    static void checkBalance(){
+        System.out.println("Current Balance = " + balance);
     }
 }
